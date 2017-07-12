@@ -13,11 +13,17 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        // get Repository => http://symfony.com/doc/current/doctrine.html
+        $carRepository = $this->getDoctrine()->getRepository('CarBundle:Car');
+        $cars = $carRepository->findAll();   //retrieve all data
+
+        /*
         $cars = [
             ['make'=> 'BMW', 'name' => 'X1'],
             ['make'=> 'Honda', 'name' => 'Jazz'],
             ['make'=> 'Audi', 'name' => 'Q7'],
         ];
+        */
         /* http://symfony.com/doc/current/controller.html
            A controller is a PHP function you create that reads information from the Symfony's Request object and creates and returns a Response object.
            The response could be an HTML page, JSON, XML, a file download, a redirect, a 404 error or anything else you can dream up.

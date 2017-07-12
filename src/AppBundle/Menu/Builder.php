@@ -4,6 +4,10 @@
  * User: matthewchick
  * Date: 11/7/2017
  * Time: 9:28 PM
+ * https://symfony.com/doc/current/bundles/KnpMenuBundle/index.html
+ * step1: download the Bundle => composer require knplabs/knp-menu-bundle
+ * step2: Enable the Bundle => add new Knp\Bundle\MenuBundle\KnpMenuBundle(), in the app/AppKernel.php
+ * step3: Optional Configure the bundle => inside app/config/config.yml
  */
 
 namespace AppBundle\Menu;

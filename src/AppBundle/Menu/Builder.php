@@ -20,6 +20,8 @@ class Builder
     public function mainMenu(MenuFactory $factory, array $options)
     {
         $menu = $factory->createItem('root');
+        // Every children of root will have this attribute set, put Home close to Symfony
+        $menu -> setChildrenAttribute('class', 'nav navbar-nav');
         $menu->addChild('Home', ['route' => 'homepage']);
         return $menu;
     }

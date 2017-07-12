@@ -23,6 +23,7 @@ class Builder
         // Every children of root will have this attribute set, put Home close to Symfony
         $menu -> setChildrenAttribute('class', 'nav navbar-nav');
         $menu->addChild('Home', ['route' => 'homepage']);
+        $menu->addChild('Offer', ['route' => 'offer']);
         return $menu;
     }
 }

@@ -2,11 +2,11 @@
 
 {% block title %}
     {{ parent() }}                    {# call parent => base.html.twig title #}
-    {{ car.name }}
+    {{ car.model.name }}
 {% endblock %}
 {% block body %}
-    <h1>{{ car.name }}</h1>
-    <h3>Make: {{ car.make }}</h3>
+    <h1>{{ car.make.name }}</h1>
+    <h3>Make: {{ car.model.name }}</h3>
 
     <table class="table">
         <tr>

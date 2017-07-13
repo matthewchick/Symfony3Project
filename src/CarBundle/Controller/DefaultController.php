@@ -14,9 +14,8 @@ class DefaultController extends Controller
     public function indexAction()
     {
         // get Repository => http://symfony.com/doc/current/doctrine.html
-        $carRepository = $this->getDoctrine()->getRepository('CarBundle:Car');
+        $carRepository= $this->getDoctrine()->getRepository('CarBundle:Car');
         $cars = $carRepository->findAll();   //retrieve all data
-
         /*
         $cars = [
             ['make'=> 'BMW', 'name' => 'X1'],
@@ -32,5 +31,15 @@ class DefaultController extends Controller
            return $this->render('CarBundle:Default:index.html.twig', array('cars' => $cars));
         */
         return $this->render('CarBundle:Default:index.html.twig', ['cars' => $cars]);
+    }
+
+    /**
+     * @param $id
+     * @Route("/car/{id}", name="show_car")
+     */
+    public function showAction($id){
+        $carRepository= $this->getDoctrine()->getRepository('CarBundle:Car');
+        $car = $carRepository->find($id);
+        return $this->render('CarBundle:Default:show.html.twig', ['car' => $car]);
     }
 }

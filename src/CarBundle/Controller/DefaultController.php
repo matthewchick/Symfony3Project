@@ -15,7 +15,9 @@ class DefaultController extends Controller
     {
         // get Repository => http://symfony.com/doc/current/doctrine.html
         $carRepository= $this->getDoctrine()->getRepository('CarBundle:Car');
-        $cars = $carRepository->findAll();   //retrieve all data
+        // Use QueryBuilder to improve performance
+        $cars = $carRepository->findCarsWithDetails();
+        /* $cars = $carRepository->findAll();   //retrieve all data */
         /*
         $cars = [
             ['make'=> 'BMW', 'name' => 'X1'],
@@ -39,7 +41,9 @@ class DefaultController extends Controller
      */
     public function showAction($id){
         $carRepository= $this->getDoctrine()->getRepository('CarBundle:Car');
-        $car = $carRepository->find($id);
+        // $car = $carRepository->find($id);
+        // Use QueryBuilder to improve performance
+        $car = $carRepository->findCarsWithDetailsById($id);
         return $this->render('CarBundle:Default:show.html.twig', ['car' => $car]);
     }
 }

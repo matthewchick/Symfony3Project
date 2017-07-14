@@ -10,11 +10,27 @@ namespace CarBundle\Repository;
  */
 class CarRepository extends \Doctrine\ORM\EntityRepository
 {
+
     public function findCarsWithDetails() {
+        // createQueryBuilder() automatically selects FROM AppBundle:Car
+        // and aliases it to "c"
+        // http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/query-builder.html
         $qb = $this->createQueryBuilder('c');
-        $qb->select('c');
+        $qb->select('c, make, model');
         $qb->join('c.make', 'make');
         $qb->join('c.model', 'model');
         return $qb->getQuery()->getResult();
     }
+
+    public function findCarsWithDetailsById($id) {
+        // get single result
+        $qb = $this->createQueryBuilder('c');
+        $qb->select('c, make, model');
+        $qb->join('c.make', 'make');
+        $qb->join('c.model', 'model');
+        $qb->where('c.id = :id');
+        $qb->setParameter('id', $id);
+        return $qb->getQuery()->getSingleResult();
+    }
+
 }

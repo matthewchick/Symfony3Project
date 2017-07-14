@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Car
- *
+ * http://symfony.com/doc/current/doctrine/associations.html
  * @ORM\Table(name="car")
  * @ORM\Entity(repositoryClass="CarBundle\Repository\CarRepository")
  */

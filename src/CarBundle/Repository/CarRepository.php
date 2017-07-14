@@ -10,4 +10,11 @@ namespace CarBundle\Repository;
  */
 class CarRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findCarsWithDetails() {
+        $qb = $this->createQueryBuilder('c');
+        $qb->select('c');
+        $qb->join('c.make', 'make');
+        $qb->join('c.model', 'model');
+        return $qb->getQuery()->getResult();
+    }
 }

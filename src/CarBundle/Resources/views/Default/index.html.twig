@@ -6,11 +6,16 @@
 {% endblock %}
 {% block body %}
     <h1>Our Offers</h1>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button type="submit" class="btn btn-default">Search</button>
-    {{ form_end(form) }}
-    <table class = "table">
+    <div class="pull-right">
+        {{ form_start(form, {attr: {class: 'form-inline'}}) }}    {# https://symfony.com/doc/current/reference/forms/twig_reference.html #}
+        {# The second argument to form_widget() is an array of variables.
+           The most common variable is attr, which is an array of HTML attributes to apply to the HTML widget. #}
+        {{ form_widget(form.search, {attr: {placeholder: 'Search'}}) }}     {# form.search override search label #}
+        <button type="submit" class="btn btn-default">Search</button>
+        {{ form_end(form) }}
+        <br/>
+    </div>
+    <table class="table">
         <tr>
             <th>Make</th>
             <th>Name</th>

@@ -35,7 +35,9 @@ framework:
         log: true
 
 # Twig Configuration
+# since search button uses bootstrap
 # Add bootstrap form theme https://symfony.com/blog/new-in-symfony-2-6-bootstrap-form-theme
+
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'

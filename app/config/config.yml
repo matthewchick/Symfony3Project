@@ -35,9 +35,12 @@ framework:
         log: true
 
 # Twig Configuration
+# Add bootstrap form theme https://symfony.com/blog/new-in-symfony-2-6-bootstrap-form-theme
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes:
+      - 'bootstrap_3_layout.html.twig'
 
 # Doctrine Configuration
 doctrine:

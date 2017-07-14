@@ -3,6 +3,7 @@
 namespace CarBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,8 +20,10 @@ class DefaultController extends Controller
         // Use QueryBuilder to improve performance
         $cars = $carRepository->findCarsWithDetails();
         // https://symfony.com/doc/current/best_practices/forms.html
+        // import 'use Symfony\Component\Form\Extension\Core\Type\TextType;'
         $form = $this->createFormBuilder()
             ->add('search',TextType::class)
+            // ->add('submit', SubmitType::class)
             ->getForm();
         /* $cars = $carRepository->findAll();   //retrieve all data */
         /*

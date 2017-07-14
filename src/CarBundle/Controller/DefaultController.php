@@ -3,6 +3,7 @@
 namespace CarBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -17,6 +18,10 @@ class DefaultController extends Controller
         $carRepository= $this->getDoctrine()->getRepository('CarBundle:Car');
         // Use QueryBuilder to improve performance
         $cars = $carRepository->findCarsWithDetails();
+        // https://symfony.com/doc/current/best_practices/forms.html
+        $form = $this->createFormBuilder()
+            ->add('search',TextType::class)
+            ->getForm();
         /* $cars = $carRepository->findAll();   //retrieve all data */
         /*
         $cars = [
@@ -32,7 +37,12 @@ class DefaultController extends Controller
            The render() method renders a template and puts that content into a Response object
            return $this->render('CarBundle:Default:index.html.twig', array('cars' => $cars));
         */
-        return $this->render('CarBundle:Default:index.html.twig', ['cars' => $cars]);
+        return $this->render('CarBundle:Default:index.html.twig',
+            [
+                'cars' => $cars,
+                'form' => $form->createView()
+            ]
+        );
     }
 
     /**

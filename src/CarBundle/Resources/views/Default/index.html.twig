@@ -6,6 +6,9 @@
 {% endblock %}
 {% block body %}
     <h1>Our Offers</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
     <table class = "table">
         <tr>
             <th>Make</th>
